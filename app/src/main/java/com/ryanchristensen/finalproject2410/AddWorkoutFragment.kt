@@ -23,7 +23,7 @@ class AddWorkoutFragment : Fragment() {
         val viewModel = WorkoutsViewModel()
 
 
-        homeBinding.workoutsList.adapter = WorkoutsAdapter(viewModel.workouts) {
+        homeBinding.workoutsList.adapter = WorkoutsAdapter(viewModel.workouts, viewModel) {
             viewModel.toggleWorkoutCompletion(it)
         }
         homeBinding.workoutsList.layoutManager = LinearLayoutManager(context)

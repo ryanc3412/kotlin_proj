@@ -24,4 +24,8 @@ object WorkoutsRepository {
     suspend fun update(workout: Workout) {
         db.getWorkoutsDao().updateWorkout(workout)
     }
+
+    suspend fun delete(workout: Workout) {
+        db.getWorkoutsDao().deleteWorkout(workout)
+    }
 }

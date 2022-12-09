@@ -36,6 +36,14 @@ class WorkoutsViewModel: ViewModel() {
         }
     }
 
+    fun deleteWorkout(workout: Workout) {
+        viewModelScope.launch {
+            WorkoutsRepository.delete(workout)
+            workouts.remove(workout)
+        }
+
+    }
+
     fun createWorkout(workoutInput: String) {
         errorMessage.value = ""
 
@@ -59,4 +67,6 @@ class WorkoutsViewModel: ViewModel() {
             workouts.add(workout)
         }
     }
+
+
 }

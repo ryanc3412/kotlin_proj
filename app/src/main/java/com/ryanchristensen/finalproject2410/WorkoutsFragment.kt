@@ -20,7 +20,7 @@ class WorkoutsFragment : Fragment() {
         val binding = FragmentWorkoutsBinding.inflate(inflater, container, false)
         val viewModel = WorkoutsViewModel()
 
-        binding.workoutsList.adapter = WorkoutsAdapter(viewModel.workouts) {
+        binding.workoutsList.adapter = WorkoutsAdapter(viewModel.workouts, viewModel) {
             viewModel.toggleWorkoutCompletion(it)
         }
         binding.workoutsList.layoutManager = LinearLayoutManager(context)

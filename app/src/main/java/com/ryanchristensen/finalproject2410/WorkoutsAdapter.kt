@@ -1,5 +1,6 @@
 package com.ryanchristensen.finalproject2410
 
+import WorkoutsRepository
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.ObservableArrayList
@@ -8,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ryanchristensen.finalproject.models.Workout
 import com.ryanchristensen.finalproject2410.databinding.WorkoutItemBinding
 
-class WorkoutsAdapter (val workouts: ObservableArrayList<Workout>, val onWorkoutClicked: (Workout) -> Unit): RecyclerView.Adapter<WorkoutsAdapter.ViewHolder>() {
+class WorkoutsAdapter (val workouts: ObservableArrayList<Workout>, val viewModel: WorkoutsViewModel, val onWorkoutClicked: (Workout) -> Unit): RecyclerView.Adapter<WorkoutsAdapter.ViewHolder>() {
     class ViewHolder(val binding: WorkoutItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     init {
@@ -62,6 +63,10 @@ class WorkoutsAdapter (val workouts: ObservableArrayList<Workout>, val onWorkout
         val workout = workouts[position]
         holder.binding.checkBox.text = workout.description
         holder.binding.checkBox.isChecked = workout.completed
+        holder.binding.delete.setOnClickListener {
+            viewModel.deleteWorkout(workout)
+            
+        }
         holder.binding.checkBox.setOnClickListener {
             onWorkoutClicked(workout)
         }
