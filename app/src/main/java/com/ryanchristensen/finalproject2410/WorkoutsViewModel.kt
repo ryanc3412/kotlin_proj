@@ -42,7 +42,7 @@ class WorkoutsViewModel: ViewModel() {
         if (workoutInput.isEmpty()) {
             errorMessage.value = "Todo input cannot be blank."
             viewModelScope.launch {
-                delay(3000)
+                delay(6000)
                 errorMessage.value = ""
             }
             return
